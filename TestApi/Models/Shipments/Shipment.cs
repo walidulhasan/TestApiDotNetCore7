@@ -4,7 +4,7 @@ using TestApi.Models.Orders;
 
 namespace TestApi.Models.Shipments
 {
-    public class Shipment
+    public class Shipment: DefaultEntityModelProperty
     {
         [Key]
         public int ShipmentId { get; set; }

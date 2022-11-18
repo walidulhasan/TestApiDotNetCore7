@@ -4,7 +4,7 @@ using TestApi.Models.Roles;
 
 namespace TestApi.Models.Users;
 
-public class User
+public class User: DefaultEntityModelProperty
 {
     [Key]
     public int Id { get; set; }

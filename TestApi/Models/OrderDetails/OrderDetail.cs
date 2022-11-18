@@ -2,7 +2,7 @@
 
 namespace TestApi.Models.OrderDetails
 {
-    public class OrderDetail
+    public class OrderDetail: DefaultEntityModelProperty
     {
         [Key]
         public int Id { get; set; }

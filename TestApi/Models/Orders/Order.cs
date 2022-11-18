@@ -4,7 +4,7 @@ using TestApi.Models.Users;
 
 namespace TestApi.Models.Orders
 {
-    public class Order
+    public class Order: DefaultEntityModelProperty
     {
         [Key]
         public int OrderId { get; set; }

@@ -4,7 +4,7 @@ using TestApi.Models.Categorys;
 
 namespace TestApi.Models.Products
 {
-    public class Product
+    public class Product: DefaultEntityModelProperty
     {
         [Key]
         public int ProductId { get; set; }

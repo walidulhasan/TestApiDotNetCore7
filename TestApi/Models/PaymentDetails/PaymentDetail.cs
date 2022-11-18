@@ -4,7 +4,7 @@ using TestApi.Models.Orders;
 
 namespace TestApi.Models.PaymentDetails
 {
-    public class PaymentDetail
+    public class PaymentDetail: DefaultEntityModelProperty
     {
         [Key]
         public int PaymentDetailId { get; set; }

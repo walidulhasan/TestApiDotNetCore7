@@ -2,7 +2,7 @@
 
 namespace TestApi.Models.Roles
 {
-    public class Role
+    public class Role: DefaultEntityModelProperty
     {
         [Key]
         public int RoleId { get; set; }

@@ -2,7 +2,7 @@
 
 namespace TestApi.Models.Categorys
 {
-    public class Category
+    public class Category: DefaultEntityModelProperty
     {
         [Key]
         public int CategoryId { get; set; }
