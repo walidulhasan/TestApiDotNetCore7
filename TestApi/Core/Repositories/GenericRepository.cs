@@ -41,5 +41,26 @@ namespace TestApi.Core.Repositories
             _dbSet.Update(entity);
             return true;
         }
+        protected DbSet<T> DbSet
+        {
+            get
+            {
+                if (dbSet == null)
+                    dbSet = _context.Set<T>();
+                return dbSet;
+            }
+        }
+        private DbSet<T> dbSet;
+
+
+        public async Task<object> InsertAsync(T entity, bool saveChanges = true)
+        {
+            var rtn = await DbSet.AddAsync(entity);
+            if (saveChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
+            return rtn;
+        }
     }
 }

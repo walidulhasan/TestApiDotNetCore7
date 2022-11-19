@@ -12,8 +12,8 @@ namespace TestApi.Models.Orders
         public Order()
         {
             OrderDetail = new List<OrderDetail>();
-            Shipment = new List<Shipment>();
-            PaymentDetail=new List<PaymentDetail>();
+            Shipment = new Shipment();
+            PaymentDetail=new PaymentDetail();
         }
         [Key]
         public int OrderId { get; set; }
@@ -30,8 +30,8 @@ namespace TestApi.Models.Orders
         public int UserId { get; set; }
         public virtual User User { get; set; }
         public virtual List<OrderDetail> OrderDetail { get; set; }
-        public virtual List<Shipment> Shipment { get; set; }
-        public virtual List<PaymentDetail> PaymentDetail { get; set; }
+        public virtual Shipment Shipment { get; set; }
+        public virtual PaymentDetail? PaymentDetail { get; set; }
         
     }
 }

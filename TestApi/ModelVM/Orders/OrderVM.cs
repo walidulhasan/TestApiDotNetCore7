@@ -21,8 +21,8 @@ namespace TestApi.ModelVM.Orders
         public DateTime DeliveryDate { get; set; }
         public int UserId { get; set; }
         public List<OrderDetailVM> OrderDetail { get; set; }
-        public List<PaymentDetailVM> PaymentDetail { get; set; }
-        public List<ShipmentVM> Shipment { get; set; }
+        public PaymentDetailVM? PaymentDetail { get; set; }
+        public ShipmentVM Shipment { get; set; }
 
         public void Mapping(MappingProfile profile)
         {

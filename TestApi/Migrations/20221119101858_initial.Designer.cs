@@ -12,7 +12,7 @@ using TestApi.Data;
 namespace TestApi.Migrations
 {
     [DbContext(typeof(TestApiDbContext))]
-    [Migration("20221119083603_initial")]
+    [Migration("20221119101858_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -114,8 +114,8 @@ namespace TestApi.Migrations
                     b.Property<DateTime>("PaidDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Shipment")
-                        .HasColumnType("int");
+                    b.Property<double>("ShipmentCost")
+                        .HasColumnType("float");
 
                     b.Property<double>("Tax")
                         .HasColumnType("float");
@@ -131,6 +131,36 @@ namespace TestApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("TestApi.Models.PaymentDetails.PaymentDetail", b =>
+                {
+                    b.Property<int>("PaymentDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentDetailId"));
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("PaidAmount")
+                        .HasColumnType("float");
+
+                    b.HasKey("PaymentDetailId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("PaymentDetail");
                 });
 
             modelBuilder.Entity("TestApi.Models.Products.Product", b =>
@@ -195,6 +225,42 @@ namespace TestApi.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("TestApi.Models.Shipments.Shipment", b =>
+                {
+                    b.Property<int>("ShipmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipmentId"));
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Division")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ShipmentId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Shipment");
                 });
 
             modelBuilder.Entity("TestApi.Models.Users.User", b =>
@@ -263,6 +329,17 @@ namespace TestApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("TestApi.Models.PaymentDetails.PaymentDetail", b =>
+                {
+                    b.HasOne("TestApi.Models.Orders.Order", "Order")
+                        .WithMany("PaymentDetail")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("TestApi.Models.Products.Product", b =>
                 {
                     b.HasOne("TestApi.Models.Categorys.Category", "Category")
@@ -272,6 +349,17 @@ namespace TestApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("TestApi.Models.Shipments.Shipment", b =>
+                {
+                    b.HasOne("TestApi.Models.Orders.Order", "Order")
+                        .WithMany("Shipment")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("TestApi.Models.Users.User", b =>
@@ -288,6 +376,10 @@ namespace TestApi.Migrations
             modelBuilder.Entity("TestApi.Models.Orders.Order", b =>
                 {
                     b.Navigation("OrderDetail");
+
+                    b.Navigation("PaymentDetail");
+
+                    b.Navigation("Shipment");
                 });
 
             modelBuilder.Entity("TestApi.Models.Products.Product", b =>

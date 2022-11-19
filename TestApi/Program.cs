@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using TestApi.Common.Mappings;
+using System.Text.Json.Serialization;
 using TestApi.Core;
 using TestApi.Core.Repositories;
 using TestApi.Data;
+using TestApi.Interface.Repositories.Orders;
+using TestApi.InterfaceImplementation.Repositories.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<TestApiDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorks>();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
