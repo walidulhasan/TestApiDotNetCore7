@@ -4,7 +4,7 @@ using TestApi.Data;
 using TestApi.Interface.Repositories.Users;
 using TestApi.Models.Users;
 
-namespace TestApi.InterfaceImplementation.Repositories
+namespace TestApi.InterfaceImplementation.Repositories.Users
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
