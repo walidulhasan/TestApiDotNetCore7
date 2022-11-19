@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TestApi.Common.Mappings;
 using TestApi.Core;
 using TestApi.Core.Repositories;
 using TestApi.Data;
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<TestApiDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorks>();

@@ -81,6 +81,8 @@ C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\TestApi.de
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\TestApi.runtimeconfig.json
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\TestApi.dll
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\TestApi.pdb
+C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\Robintex\Desktop\TestApiDotNetCore7\TestApi\bin\Debug\net7.0\Humanizer.dll

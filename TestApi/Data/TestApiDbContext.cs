@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestApi.Models.Categorys;
 using TestApi.Models.OrderDetails;
+using TestApi.Models.Orders;
 using TestApi.Models.Products;
 using TestApi.Models.Roles;
 using TestApi.Models.Users;
@@ -14,6 +15,7 @@ namespace TestApi.Data
         public DbSet<OrderDetail> OrderDetail { get;set;}
         public DbSet<Category> Categorie { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Order> Order { get; set; }
         public TestApiDbContext(DbContextOptions<TestApiDbContext>options):base(options)
         {
 
