@@ -4,9 +4,9 @@ using TestApi.Models.Orders;
 using TestApi.Models.PaymentDetails;
 using TestApi.Models.Shipments;
 
-namespace TestApi.ModelVM.Orders
+namespace TestApi.ModelRsDto.OrderMaster
 {
-    public class OrderVM:IMapFrom<Order>
+    public class OrderMasterRM :IMapFrom<Order>
     {
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
@@ -19,16 +19,17 @@ namespace TestApi.ModelVM.Orders
         public bool IsDelivered { get; set; }
         public DateTime DeliveryDate { get; set; }
         public int UserId { get; set; }
-        public List<OrderDetailVM> OrderDetail { get; set; }
-        public PaymentDetailVM? PaymentDetail { get; set; }
-        public ShipmentVM Shipment { get; set; }
+        public List<OrderDetailRM> OrderDetail { get; set; }
+        public PaymentDetailRM? PaymentDetail { get; set; }
+        public ShipmentRM Shipment { get; set; }
 
         public void Mapping(MappingProfile profile)
         {
-            profile.CreateMap<OrderVM, Order>().ReverseMap();
+            profile.CreateMap<Order, OrderMasterRM>();
         }
     }
-    public class OrderDetailVM : IMapFrom<OrderDetail>
+
+    public class OrderDetailRM : IMapFrom<OrderDetail>
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
@@ -38,11 +39,11 @@ namespace TestApi.ModelVM.Orders
 
         public void Mapping(MappingProfile profile)
         {
-            profile.CreateMap<OrderDetailVM, OrderDetail>();
+            profile.CreateMap<OrderDetail, OrderDetailRM>();
         }
     }
 
-    public class PaymentDetailVM : IMapFrom<PaymentDetail>
+    public class PaymentDetailRM : IMapFrom<PaymentDetail>
     {
         public int PaymentDetailId { get; set; }
         public int OrderId { get; set; }
@@ -51,11 +52,11 @@ namespace TestApi.ModelVM.Orders
 
         public void Mapping(MappingProfile profile)
         {
-            profile.CreateMap<PaymentDetailVM, PaymentDetail>();
+            profile.CreateMap<PaymentDetail, PaymentDetailRM>();
         }
     }
 
-    public class ShipmentVM : IMapFrom<Shipment>
+    public class ShipmentRM : IMapFrom<Shipment>
     {
         public int ShipmentId { get; set; }
         public string Country { get; set; }
@@ -66,7 +67,7 @@ namespace TestApi.ModelVM.Orders
 
         public void Mapping(MappingProfile profile)
         {
-            profile.CreateMap<ShipmentVM, Shipment>();
+            profile.CreateMap<Shipment, ShipmentRM>();
         }
     }
 }

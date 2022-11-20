@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Core;
 using TestApi.Interface.Repositories.Orders;
+using TestApi.ModelRsDto.OrderMaster;
 using TestApi.ModelRsDto.Users.UserDtos;
 using TestApi.Models.Orders;
 using TestApi.Models.Users;
@@ -29,6 +30,17 @@ namespace TestApi.Controllers
             var entity = _mapper.Map<Order>(orderVM);
             await _unitOfWorks.Orders.CreateOrder(orderVM, true);
             return Ok(entity);
+        }
+        [HttpGet("GetAllOrderMaster")]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            return Ok(await _unitOfWorks.Orders.GetAllDataOfOrderMaster(cancellationToken));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSingleOrder(int id,CancellationToken cancellationToken)
+        {
+            return Ok(await _unitOfWorks.Orders.GetSingleOrderMaster(id,cancellationToken));
         }
 
     }
