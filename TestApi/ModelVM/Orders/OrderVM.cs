@@ -11,9 +11,9 @@ public class OrderVM : IMapFrom<Order>
     public int OrderId { get; set; }
     public DateTime OrderDate { get; set; }
     public double Amount { get; set; }
-    public double Tax { get; set; }
-    public double ShipmentCost { get; set; }
-    public double TotalAmount { get; set; }
+    public double Tax { get { return (Amount*0.15); } }
+    public double ShipmentCost { get { return Amount < 300 ? 15 : 0; } }
+    public double TotalAmount { get { return Amount + Tax + ShipmentCost; } }
     public bool IsPaid { get; set; }
     public DateTime PaidDate { get; set; }
     public bool IsDelivered { get; set; }
