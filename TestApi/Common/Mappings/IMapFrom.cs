@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 
-namespace TestApi.Common.Mappings
+namespace TestApi.Common.Mappings;
+
+public interface IMapFrom<T>
 {
-    public interface IMapFrom<T>
-    {
-        void Mapping(Profile profile) => profile.CreateMap(typeof(T), GetType());
-    }
+    void Mapping(Profile profile) => profile.CreateMap(typeof(T), GetType());
 }

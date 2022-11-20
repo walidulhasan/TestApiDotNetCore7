@@ -1,13 +1,11 @@
 ﻿
 
 using TestApi.Common.Mappings;
-using TestApi.ModelRsDto.Users.UserDtos;
 using TestApi.Models.Products;
-using TestApi.Models.Users;
 
 namespace TestApi.ModelRsDto.Products.ProductsDTO;
 
-public class ProductDTO:IMapFrom<Product>
+public class ProductDTO : IMapFrom<Product>
 {
     public int ProductId { get; set; }
     public string Name { get; set; }
