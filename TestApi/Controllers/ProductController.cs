@@ -33,8 +33,8 @@ public class ProductController : ControllerBase
         return Ok(Product);
     }
     [HttpPost]
-    [Route(template: "CreateProduct")]
-    public async Task<IActionResult> CreateUser(ProductDTO productDTO)
+    [Route("CreateProduct")]
+    public async Task<IActionResult> CreateProduct(ProductDTO productDTO)
     {
         var entity = _mapper.Map<Product>(productDTO);
         await _unitOfWorks.Products.Add(entity);
