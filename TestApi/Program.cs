@@ -3,8 +3,6 @@ using System.Text.Json.Serialization;
 using TestApi.Core;
 using TestApi.Core.Repositories;
 using TestApi.Data;
-using TestApi.Interface.Repositories.Orders;
-using TestApi.InterfaceImplementation.Repositories.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
